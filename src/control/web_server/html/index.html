@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<header>
+    <title>RT_Audio_DSP</title>
+    <link rel="stylesheet" href="default_style.css"> 
+</header>
+
+<body>
+    <div class="bg-text">
+		<h1>RT_Audio_DSP</h1>
+		<p>S/PDIF audio processor</p>
+	</div>
+	<div class="line-break"></div>
+
+	<div class="fx-box">
+		<div class="fx-label">Trim</div>
+		<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				min={-128} max={24} 
+				step={0.1}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{trim_display}
+			</div>
+		</div>
+	</div>
+
+	<div class="fx-box">
+		<div class="fx-label">Meters</div>
+	</div>
+	<div class="line-break"></div>
+
+
+	<div class="fx-box">
+		<div class="fx-label">EQs</div>
+		<div class="fx-sub-box">
+			Band1
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b1f}
+				on:dblclick = {b1f_reset}
+				on:input={update_b1f}
+				min={20} max={20000} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Freq:</div>
+			<div>
+				{b1f_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b1a}
+				on:dblclick = {b1a_reset}
+				on:input={update_b1a}
+				min={-12} max={12} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{b1a_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b1q}
+				on:dblclick = {b1q_reset}
+				min={0.1} max={10} 
+				step={0.01}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Q:</div>
+			<div>
+				{b1q}
+			</div>
+			</div>
+		</div>
+		<div class="fx-sub-box">
+			Band2
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b2f}
+				on:dblclick = {b2f_reset}
+				on:input={update_b2f}
+				min={20} max={20000} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Freq:</div>
+			<div>
+				{b2f_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b2a}
+				on:dblclick = {b2a_reset}
+				on:input={update_b2a}
+				min={-12} max={12} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{b2a_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b2q}
+				on:dblclick = {b2q_reset}
+				min={0.1} max={10} 
+				step={0.01}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Q:</div>
+			<div>
+				{b2q}
+			</div>
+			</div>
+		</div>
+		<div class="fx-sub-box">
+			Band3
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b3f}
+				on:dblclick = {b3f_reset}
+				on:input={update_b3f}
+				min={20} max={20000} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Freq:</div>
+			<div>
+				{b3f_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b3a}
+				on:dblclick = {b3a_reset}
+				on:input={update_b3a}
+				min={-12} max={12} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{b3a_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b3q}
+				on:dblclick = {b3q_reset}
+				min={0.1} max={10} 
+				step={0.01}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Q:</div>
+			<div>
+				{b3q}
+			</div>
+			</div>
+		</div>
+		<div class="fx-sub-box">
+			Band4
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b4f}
+				on:dblclick = {b4f_reset}
+				on:input={update_b4f}
+				min={20} max={20000} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Freq:</div>
+			<div>
+				{b4f_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b4a}
+				on:dblclick = {b4a_reset}
+				on:input={update_b4a}
+				min={-12} max={12} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{b4a_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b4q}
+				on:dblclick = {b4q_reset}
+				min={0.1} max={10} 
+				step={0.01}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Q:</div>
+			<div>
+				{b4q}
+			</div>
+			</div>
+		</div>
+		<div class="fx-sub-box">
+			Band5
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b5f}
+				on:dblclick = {b5f_reset}
+				on:input={update_b5f}
+				min={20} max={20000} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Freq:</div>
+			<div>
+				{b5f_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b5a}
+				on:dblclick = {b5a_reset}
+				on:input={update_b5a}
+				min={-12} max={12} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{b5a_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b5q}
+				on:dblclick = {b5q_reset}
+				min={0.1} max={10} 
+				step={0.01}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Q:</div>
+			<div>
+				{b5q}
+			</div>
+			</div>
+		</div>
+		<div class="fx-sub-box">
+			Band6
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b6f}
+				on:dblclick = {b6f_reset}
+				on:input={update_b6f}
+				min={20} max={20000} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Freq:</div>
+			<div>
+				{b6f_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b6a}
+				on:dblclick = {b6a_reset}
+				on:input={update_b6a}
+				min={-12} max={12} 
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Gain:</div>
+			<div>
+				{b6a_display}
+			</div>
+			</div>
+			<div class="knob-box">
+				<script src ="input-knob.js"></script>
+				<input type="range" 
+				class="input-knob" 
+				bind:value = {b6q}
+				on:dblclick = {b6q_reset}
+				min={0.1} max={10} 
+				step={0.01}
+				data-fgcolor= #678aa8 
+				data-bgcolor= #0d4b82
+				style="cursor:pointer"/>
+			<div>Q:</div>
+			<div>
+				{b6q}
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="line-break"></div>
+
+
+	<div class="fx-box">
+		<div class="fx-label">Dyn1</div>
+	</div>
+
+	<div class="fx-box">
+		<div class="fx-label">Dyn2</div>
+	</div>
+    
+    <div class="status-bar">
+        <span class="status-txt">
+            DSP Unit: <p style="font-style: italic; display: inline;">localhost:6060</p>
+        </span>
+        <span class="status-led" id="statusled"></span>
+    </div>
+    <script src="gui.js"></script>
+</body>
