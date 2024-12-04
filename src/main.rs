@@ -79,8 +79,8 @@ fn main() {
     }
     }
 
-    //socket_handler::launch_socket(Arc::clone(&dsp_slots));
-    web_server::server::start(Arc::clone(&dsp_slots));
+    socket_handler::launch_socket(Arc::clone(&dsp_slots));
+    //web_server::server::start(Arc::clone(&dsp_slots));
 
     let mut buffer = [0i32; SYSTEM_DSP_BUFFER_LENGTH];
     

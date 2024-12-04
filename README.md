@@ -1,5 +1,5 @@
 # RealTime audio DSP
-This project provide a multichannel DSP, with an web server dedicated to remote control
+This project provide a realtime multichannel DSP, with a web server dedicated to remote control
 It is design for Alsa & Linux based systems.
 
 ## Current implementations
