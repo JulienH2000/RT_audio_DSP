@@ -1,0 +1,10 @@
+[package]
+name = "rt_audio_dsp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+alsa = { git = "https://github.com/diwic/alsa-rs.git", version = "0.9.1" }
+i24 = "1.0.1"
+json = "0.12.4"
+zmq = "0.10.0"
