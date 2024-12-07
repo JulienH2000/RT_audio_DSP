@@ -13,12 +13,12 @@ pub enum EqModel {
 }
 
 #[derive(Clone, Debug, Copy)]
-struct Band {
-    model: ControlTarget,
-    freq: ControlTarget,
-    bypass: ControlTarget,
-    amp: ControlTarget,
-    q: ControlTarget,
+pub struct Band {
+    pub model: ControlTarget,
+    pub freq: ControlTarget,
+    pub bypass: ControlTarget,
+    pub amp: ControlTarget,
+    pub q: ControlTarget,
 }
 
 impl Band {
@@ -82,12 +82,12 @@ impl Eq {
     pub fn new (index: u8) -> Self {
         return Eq {
             index: index,
-            band1: Band::new(ControlTarget::eqmodel(EqModel::HighPass), ControlTarget::freq(120), ControlTarget::bypass(false), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
-            band2: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(340), ControlTarget::bypass(false), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
-            band3: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(600), ControlTarget::bypass(false), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
-            band4: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(1500), ControlTarget::bypass(false), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
-            band5: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(3000), ControlTarget::bypass(false), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
-            band6: Band::new(ControlTarget::eqmodel(EqModel::LowPass), ControlTarget::freq(20000), ControlTarget::bypass(false), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
+            band1: Band::new(ControlTarget::eqmodel(EqModel::HighPass), ControlTarget::freq(120), ControlTarget::bypass(true), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
+            band2: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(340), ControlTarget::bypass(true), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
+            band3: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(600), ControlTarget::bypass(true), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
+            band4: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(1500), ControlTarget::bypass(true), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
+            band5: Band::new(ControlTarget::eqmodel(EqModel::Bell), ControlTarget::freq(3000), ControlTarget::bypass(true), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
+            band6: Band::new(ControlTarget::eqmodel(EqModel::LowPass), ControlTarget::freq(20000), ControlTarget::bypass(true), ControlTarget::amp(1f32), ControlTarget::q(1f32)),
             input_sample_minus_one: 0i32,
             input_sample_minus_two: 0i32,
             output_sample_minus_one: 0i32,

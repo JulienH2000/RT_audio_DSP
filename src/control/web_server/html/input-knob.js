@@ -199,7 +199,7 @@ window.addEventListener("load",()=>{
         }
       };
       ik.pointerdown=(ev)=>{
-        el.focus();
+        //el.focus();
         const evorg = ev;
         if(ev.touches)
           ev = ev.touches[0];

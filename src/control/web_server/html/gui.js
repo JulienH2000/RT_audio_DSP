@@ -1,8 +1,11 @@
-import * as Band from './band.js';
-import { getLogValue, getLinearGain } from './utils.js';
+import { Band, Rotary } from './params.js';
+import { getLogValue, getLinearValue } from './utils.js';
+import { getStatus, dspIsAlive, postInfo } from './api.js';
 
 var trim = document.getElementById("trim");
 var trimoutput= document.getElementById("trimvalue");
+
+trimoutput.innerHTML = trim.value + 'dB';
 
 var statusled = document.getElementById("statusled");
 
@@ -18,83 +21,61 @@ var rmsoutput2 = document.getElementById("rmsvalue2");
 
 var bypass_default_color = "#268cc7";
 
-var bypass_lpf = document.getElementById("bypass_lpf");
-var bp_l_state = false;
-bypass_lpf.addEventListener("click", updatebp_lpf);
-bypass_lpf.style.backgroundColor=bypass_default_color;
-
-
-const baseUrl = "10.67.0.24:6060/";
-
-trim.innerHTML = trim.value + 'dB';
-
-trim.oninput = function() { {postInfo("trim", "amp", getLinearGain(trim.value))};
+trim.oninput = function() { {postInfo("trim", "trim", "amp", getLinearValue(trim.value))};
   trimoutput.innerHTML = this.value + 'dB';
 }
 trim.ondblclick = function() { 
   trim.value = 0;
-  {postInfo("trim", "amp", getLinearGain(trim.value))};
+  {postInfo("trim", "trim", "amp", getLinearValue(trim.value))};
   trimoutput.innerHTML = trim.value + 'dB';
 }
 
-bandf.oninput = function() { {postInfo("band", "freq", getLogValue(bandf.value))};
-  bandfoutput.innerHTML = getLogValue(this.value) + 'Hz';
-}
+let band1 = new Band ("band1", 120, 0, 1);
+band1.freq.init(120);
+band1.freq.oninput();
+band1.gain.init(0);
+band1.gain.oninput();
+band1.q.init(1);
+band1.q.oninput();
+let band2 = new Band ("band2", 240, 0, 1);
+band2.freq.init(240);
+band2.freq.oninput();
+band2.gain.init(0);
+band2.gain.oninput();
+band2.q.init(1);
+band2.q.oninput();
+let band3 = new Band ("band3", 600, 0, 1);
+band3.freq.init(600);
+band3.freq.oninput();
+band3.gain.init(0);
+band3.gain.oninput();
+band3.q.init(1);
+band3.q.oninput();
+let band4 = new Band ("band4", 1200, 0, 1);
+band4.freq.init(1200);
+band4.freq.oninput();
+band4.gain.init(0);
+band4.gain.oninput();
+band4.q.init(1);
+band4.q.oninput();
+let band5 = new Band ("band5", 3200, 0, 1);
+band5.freq.init(3200);
+band5.freq.oninput();
+band5.gain.init(0);
+band5.gain.oninput();
+band5.q.init(1);
+band5.q.oninput();
+let band6 = new Band ("band6", 8000, 0, 1);
+band6.freq.init(8000);
+band6.freq.oninput();
+band6.gain.init(0);
+band6.gain.oninput();
+band6.q.init(1);
+band6.q.oninput();
 
-
-banda.oninput = function() { {postInfo("band", "amp", getLinearGain(banda.value))};
-  bandaoutput.innerHTML = this.value + 'dB';
-}
-banda.ondblclick = function() { 
-  banda.value = 0;
-  {postInfo("band", "amp", getLinearGain(banda.value))};
-  bandaoutput.innerHTML = banda.value + 'dB';
-}
-
-
-bandq.oninput = function() { {postInfo("band", "q", bandq.value)};
-  bandqoutput.innerHTML = this.value;
-}
-bandq.ondblclick = function() { 
-  bandq.value = 1;
-  {postInfo("band", "q", bandq.value)};
-  bandqoutput.innerHTML = bandq.value;
-}
-
-async function postInfo(target, param, value) {
-  const res = await fetch ('/',
-  {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      "content-Type": 'application/json'
-    },
-    body: JSON.stringify ({
-      target: target,
-      param: param,
-      value: value
-    })
-  })
-  //console.log("send to lpf")
-}
-
-async function getStatus() {
-  const res = await fetch('/dsp-status', {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json'
-    }
-  })
-  .then(res => res.json())
-  .then(res => {
-    return res.ping
-  })
-  //console.log(res)
-  return res
-}
-
+/*
 var ping_dsp = window.setInterval(async function(){
-  var status = getStatus();
+  var status = dspIsAlive();
   if (await status) {
     statusled.style.backgroundColor="#00ff00";
     statusled.style.borderBlockColor="#68f768";
@@ -103,26 +84,7 @@ var ping_dsp = window.setInterval(async function(){
     statusled.style.borderBlockColor="#db5858";
   }
 }, 1000);
-
-async function getStatus() {
-  try {
-    const response = await fetch('/status', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json'
-      }
-    });
-    const data = await response.json();
-    //console.log("Raw response data:", data);
-    if (!data) {
-      console.warn("No Status data in response");
-    }
-    return data;
-  } catch (error) {
-    console.error("Error in getPeak:", error);
-    throw error;
-  }
-}
+*/
 
 const PEAK_LEVELS = {
   HIGH: -6,
@@ -148,7 +110,7 @@ function updateLevelDisplay(peakElement, peakValue) {
     peakElement.style.backgroundColor = COLORS.GRAY;
   }
 }
-
+/*
 var get_peak = window.setInterval(async function () {
   try {
     const status = await getStatus();
@@ -166,3 +128,4 @@ var get_peak = window.setInterval(async function () {
     console.error("Error getting status:", error);
   }
 }, 120);
+*/

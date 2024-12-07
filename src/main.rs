@@ -29,7 +29,7 @@ pub mod control;
 const UI_SERVER: &'static str = "ws://localhost:6060";
 
 const SYSTEM_DSP_CHANNELS: usize = 2;
-const SYSTEM_DSP_CHANNEL_BUFFER: usize = 128;
+const SYSTEM_DSP_CHANNEL_BUFFER: usize = 256;
 const SYSTEM_DSP_BUFFER_LENGTH: usize = SYSTEM_DSP_CHANNEL_BUFFER * SYSTEM_DSP_CHANNELS;
 const SYSTEM_DSP_SAMPLE_RATE: u32 = 48000;
 const INV_SAMPLE_RATE: f32 = 1.0 / SYSTEM_DSP_SAMPLE_RATE as f32 * 0.957; //0.00002083
@@ -61,7 +61,7 @@ fn main() {
     };
     let mut op_io = op_pcm.io_i32_s24().unwrap();
 
-    let system_init = "trim,lpf,hpf,band,meter".to_string();
+    let system_init = "trim,eq".to_string();
 
     let dsp_slots = match audio_core::invoke_from_init(system_init) {
         Some(slots) => slots,
@@ -79,8 +79,8 @@ fn main() {
     }
     }
 
-    socket_handler::launch_socket(Arc::clone(&dsp_slots));
-    //web_server::server::start(Arc::clone(&dsp_slots));
+    //socket_handler::launch_socket(Arc::clone(&dsp_slots));
+    web_server::server::start(Arc::clone(&dsp_slots));
 
     let mut buffer = [0i32; SYSTEM_DSP_BUFFER_LENGTH];
     

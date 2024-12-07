@@ -40,7 +40,6 @@ pub fn dsp_handler (buffer: &mut [i32; crate::SYSTEM_DSP_BUFFER_LENGTH], dsp_slo
                     }
                 },
                 // Legacy DSP Model
-
                 Dsp::HPF(hpf) => if i as u8 == hpf.index {
                     if hpf.bypass.inner_bypass() == false {
                         hpf.next_buffer(buffer);

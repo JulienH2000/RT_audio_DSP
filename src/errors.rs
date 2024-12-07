@@ -90,3 +90,32 @@ impl fmt::Display for RunningError {
         write!(f, "Running Error !")
     }
 }
+
+#[derive(Debug)]
+pub enum HttpError {
+    InvalidMethod,
+    UnsupportedReq
+}
+
+impl fmt::Display for HttpError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::InvalidMethod => write!(f, "Invalid HTTP Request Method"),      
+            Self::UnsupportedReq => write!(f, "Unsupported HTTP Request"),      
+        }
+    }
+}
+
+impl Error for HttpError {}
+
+
+#[derive(Debug)]
+pub struct CmdError {}
+
+impl Error for CmdError {}
+
+impl fmt::Display for CmdError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "Unknown Command")
+    }
+}

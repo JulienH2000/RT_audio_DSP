@@ -17,14 +17,16 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				min={-128} max={24} 
-				step={0.1}
+				id="trim" 
+				step=0.1
+				min="-128" max="+24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{trim_display}
+			<div id="trimvalue">
 			</div>
 		</div>
 	</div>
@@ -43,48 +45,48 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b1f}
-				on:dblclick = {b1f_reset}
-				on:input={update_b1f}
-				min={20} max={20000} 
+				id="band1freq" 
+				step=1
+				min="20" max="20000"
+				value="20"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Freq:</div>
-			<div>
-				{b1f_display}
+			<div id="band1freq_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b1a}
-				on:dblclick = {b1a_reset}
-				on:input={update_b1a}
-				min={-12} max={12} 
+				id="band1amp" 
+				step=0.1
+				min="-24" max="24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{b1a_display}
+			<div id="band1amp_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b1q}
-				on:dblclick = {b1q_reset}
-				min={0.1} max={10} 
-				step={0.01}
+				id="band1q" 
+				step=0.1
+				min="0" max="10"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Q:</div>
-			<div>
-				{b1q}
+			<div id="band1q_display">
 			</div>
 			</div>
 		</div>
@@ -94,48 +96,48 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b2f}
-				on:dblclick = {b2f_reset}
-				on:input={update_b2f}
-				min={20} max={20000} 
+				id="band2freq" 
+				step=1
+				min="20" max="20000"
+				value="20"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Freq:</div>
-			<div>
-				{b2f_display}
+			<div id="band2freq_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b2a}
-				on:dblclick = {b2a_reset}
-				on:input={update_b2a}
-				min={-12} max={12} 
+				id="band2amp" 
+				step=0.1
+				min="-24" max="24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{b2a_display}
+			<div id="band2amp_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b2q}
-				on:dblclick = {b2q_reset}
-				min={0.1} max={10} 
-				step={0.01}
+				id="band2q" 
+				step=0.1
+				min="0" max="10"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Q:</div>
-			<div>
-				{b2q}
+			<div id="band2q_display">
 			</div>
 			</div>
 		</div>
@@ -145,48 +147,48 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b3f}
-				on:dblclick = {b3f_reset}
-				on:input={update_b3f}
-				min={20} max={20000} 
+				id="band3freq" 
+				step=1
+				min="20" max="20000"
+				value="20"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Freq:</div>
-			<div>
-				{b3f_display}
+			<div id="band3freq_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b3a}
-				on:dblclick = {b3a_reset}
-				on:input={update_b3a}
-				min={-12} max={12} 
+				id="band3amp" 
+				step=0.1
+				min="-24" max="24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{b3a_display}
+			<div id="band3amp_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b3q}
-				on:dblclick = {b3q_reset}
-				min={0.1} max={10} 
-				step={0.01}
+				id="band3q" 
+				step=0.1
+				min="0" max="10"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Q:</div>
-			<div>
-				{b3q}
+			<div id="band3q_display">
 			</div>
 			</div>
 		</div>
@@ -196,48 +198,48 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b4f}
-				on:dblclick = {b4f_reset}
-				on:input={update_b4f}
-				min={20} max={20000} 
+				id="band4freq" 
+				step=1
+				min="20" max="20000"
+				value="20"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Freq:</div>
-			<div>
-				{b4f_display}
+			<div id="band4freq_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b4a}
-				on:dblclick = {b4a_reset}
-				on:input={update_b4a}
-				min={-12} max={12} 
+				id="band4amp" 
+				step=0.1
+				min="-24" max="24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{b4a_display}
+			<div id="band4amp_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b4q}
-				on:dblclick = {b4q_reset}
-				min={0.1} max={10} 
-				step={0.01}
+				id="band4q" 
+				step=0.1
+				min="0" max="10"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Q:</div>
-			<div>
-				{b4q}
+			<div id="band4q_display">
 			</div>
 			</div>
 		</div>
@@ -247,48 +249,48 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b5f}
-				on:dblclick = {b5f_reset}
-				on:input={update_b5f}
-				min={20} max={20000} 
+				id="band5freq" 
+				step=1
+				min="20" max="20000"
+				value="20"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Freq:</div>
-			<div>
-				{b5f_display}
+			<div id="band5freq_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b5a}
-				on:dblclick = {b5a_reset}
-				on:input={update_b5a}
-				min={-12} max={12} 
+				id="band5amp" 
+				step=0.1
+				min="-24" max="24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{b5a_display}
+			<div id="band5amp_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b5q}
-				on:dblclick = {b5q_reset}
-				min={0.1} max={10} 
-				step={0.01}
+				id="band5q" 
+				step=0.1
+				min="0" max="10"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Q:</div>
-			<div>
-				{b5q}
+			<div id="band5q_display">
 			</div>
 			</div>
 		</div>
@@ -298,51 +300,52 @@
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b6f}
-				on:dblclick = {b6f_reset}
-				on:input={update_b6f}
-				min={20} max={20000} 
+				id="band6freq" 
+				step=1
+				min="20" max="20000"
+				value="20"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Freq:</div>
-			<div>
-				{b6f_display}
+			<div id="band6freq_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b6a}
-				on:dblclick = {b6a_reset}
-				on:input={update_b6a}
-				min={-12} max={12} 
+				id="band6amp" 
+				step=0.1
+				min="-24" max="24"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Gain:</div>
-			<div>
-				{b6a_display}
+			<div id="band6amp_display">
 			</div>
 			</div>
 			<div class="knob-box">
 				<script src ="input-knob.js"></script>
 				<input type="range" 
 				class="input-knob" 
-				bind:value = {b6q}
-				on:dblclick = {b6q_reset}
-				min={0.1} max={10} 
-				step={0.01}
+				id="band6q" 
+				step=0.1
+				min="0" max="10"
+				value="0"
 				data-fgcolor= #678aa8 
 				data-bgcolor= #0d4b82
+				data-diameter = "52"
 				style="cursor:pointer"/>
 			<div>Q:</div>
-			<div>
-				{b6q}
+			<div id="band6q_display">
 			</div>
 			</div>
 		</div>
+		
 	</div>
 	<div class="line-break"></div>
 
@@ -361,5 +364,5 @@
         </span>
         <span class="status-led" id="statusled"></span>
     </div>
-    <script src="gui.js"></script>
+    <script src="gui.js" type="module"></script>
 </body>
